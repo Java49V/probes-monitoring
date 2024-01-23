@@ -80,23 +80,22 @@ public class AvgReducerServiceTest {
 	
 	@Test
 	void testAvgValue() {
-	    ProbesList probesListWithTwoValues = new ProbesList(SENSOR_ID_AVG);
-	    probesListWithTwoValues.getValues().add(75.0f);  // Добавляем второе значение
-	    when(probesListRepo.findById(SENSOR_ID_AVG)).thenReturn(Optional.of(probesListWithTwoValues));
-	    when(probesListRepo.save(probesListWithTwoValues)).thenAnswer(new Answer<ProbesList>() {
+	    when(probesListRepo.findById(SENSOR_ID_AVG)).thenReturn(Optional.of(PROBES_LIST_AVG));
+	    when(probesListRepo.save(PROBES_LIST_AVG)).thenAnswer(new Answer<ProbesList>() {
 	        @Override
 	        public ProbesList answer(InvocationOnMock invocation) throws Throwable {
-	            mapRedis.replace(SENSOR_ID_AVG, invocation.getArgument(0));
+	            mapRedis.replace(SENSOR_ID_NO_AVG, invocation.getArgument(0));
 	            return invocation.getArgument(0);
 	        }
 	    });
 
 	    Long res = avgValueService.getAvgValue(PROBE_AVG);
 
-	    assertNull(res);  // Ожидается null, так как метод getAvgValue возвращает null после сокращения
+	    assertNotNull(res);  // Здесь происходит ошибка
 	    List<Float> list = mapRedis.get(SENSOR_ID_AVG).getValues();
 	    assertTrue(list.isEmpty());
 	}
+
 
 
 }
