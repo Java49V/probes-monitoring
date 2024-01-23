@@ -5,16 +5,11 @@
     <artifactId>probes-monitoring</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>avg-reducer</artifactId>
   <dependencies>
-  	<dependency>
-  		<groupId>telran.probes.api</groupId>
-  		<artifactId>probes-api</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
-  	   <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-stream</artifactId>
-    </dependency>
+	  <dependency>
+		  <groupId>org.springframework.boot</groupId>
+		  <artifactId>spring-boot-starter-data-redis</artifactId>
+	  </dependency>
   </dependencies>
+  <artifactId>avg-reducer</artifactId>
 </project>
