@@ -80,7 +80,6 @@ public class AvgReducerServiceTest {
 	
 	@Test
 	void testAvgValue() {
-	    // Подготовка данных
 	    ProbesList probesListWithTwoValues = new ProbesList(SENSOR_ID_AVG);
 	    probesListWithTwoValues.getValues().add(75.0f);  // Добавляем второе значение
 	    when(probesListRepo.findById(SENSOR_ID_AVG)).thenReturn(Optional.of(probesListWithTwoValues));
@@ -92,35 +91,12 @@ public class AvgReducerServiceTest {
 	        }
 	    });
 
-	    // Действие
 	    Long res = avgValueService.getAvgValue(PROBE_AVG);
 
-	    // Проверка результата
 	    assertNull(res);  // Ожидается null, так как метод getAvgValue возвращает null после сокращения
 	    List<Float> list = mapRedis.get(SENSOR_ID_AVG).getValues();
 	    assertTrue(list.isEmpty());
 	}
-
-
-
-
-//	@Test
-//	void testAvgValue() {
-//	    
-//	    when(probesListRepo.findById(SENSOR_ID_AVG)).thenReturn(Optional.of(PROBES_LIST_AVG));
-//	    when(probesListRepo.save(PROBES_LIST_AVG)).thenReturn(PROBES_LIST_AVG);
-//
-//	    Long res = avgValueService.getAvgValue(PROBE_AVG);
-//
-//	    System.out.println("Result: " + res);
-//
-//	    assertNotNull(res);  // Здесь происходит ошибка
-//	    assertEquals((long) VALUE, res);
-//	    ProbesList probesList = mapRedis.get(SENSOR_ID_AVG);
-//	    assertNotNull(probesList);
-//	    assertTrue(probesList.getValues().isEmpty());
-//	}
-//	
 
 
 }
