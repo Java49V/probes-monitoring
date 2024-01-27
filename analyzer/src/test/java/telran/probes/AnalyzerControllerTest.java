@@ -3,6 +3,8 @@ package telran.probes;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.function.Consumer;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,6 +47,8 @@ InputDestination producer;
 	OutputDestination consumer;
 	String bindingNameProducer="deviation-out-0";
 	String bindingNameConsumer="consumerProbeData-in-0";
+	@MockBean
+	Consumer<String> configChangeConsumer;
 	@MockBean
 	SensorRangeProviderService providerService;
 	@Test

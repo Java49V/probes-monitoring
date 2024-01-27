@@ -1,0 +1,10 @@
+{"properties": [{
+  "name": "app.sensor.range.provider.default.min",
+  "type": "java.lang.Float",
+  "description": "Min value of range"
+},
+{
+  "name": "app.sensor.range.provider.default.max",
+  "type": "java.lang.Float",
+  "description": "Max value of range"
+}]}
