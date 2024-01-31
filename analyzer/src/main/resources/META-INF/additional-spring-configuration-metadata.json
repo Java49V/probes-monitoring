@@ -1,10 +1,37 @@
-{"properties": [{
-  "name": "app.sensor.range.provider.default.min",
-  "type": "java.lang.Float",
-  "description": "Min value of range"
-},
-{
-  "name": "app.sensor.range.provider.default.max",
-  "type": "java.lang.Float",
-  "description": "Max value of range"
-}]}
+{"properties": [
+  {
+    "name": "app.sensor.range.provider.default.min",
+    "type": "java.lang.Float",
+    "description": "Min value of range"
+  },
+  {
+    "name": "app.sensor.range.provider.default.max",
+    "type": "java.lang.Float",
+    "description": "Max value of range"
+  },
+  {
+    "name": "app.update.token.range",
+    "type": "java.lang.String",
+    "description": "A description for 'app.update.token.range'"
+  },
+  {
+    "name": "app.update.message.delimiter",
+    "type": "java.lang.String",
+    "description": "A description for 'app.update.message.delimiter'"
+  },
+  {
+    "name": "app.update.message.delimiter",
+    "type": "java.lang.String",
+    "description": "A description for 'app.update.message.delimiter'"
+  },
+  {
+    "name": "de.flapdoodle.mongodb.embedded.version",
+    "type": "java.lang.String",
+    "description": "A description for 'de.flapdoodle.mongodb.embedded.version'"
+  },
+  {
+    "name": "app.sensor.range.provider.url",
+    "type": "java.lang.String",
+    "description": "A description for 'app.sensor.range.provider.url'"
+  }
+]}
