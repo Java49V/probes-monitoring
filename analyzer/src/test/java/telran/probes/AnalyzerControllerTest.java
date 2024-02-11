@@ -26,10 +26,10 @@ import telran.probes.service.SensorRangeProviderService;
 @Import(TestChannelBinderConfiguration.class)
 class AnalyzerControllerTest {
 	private static final long SENSOR_ID = 123l;
-	private static final int MIN_VALUE_NO_DEVIATION = 10;
-	private static final int MAX_VALUE_NO_DEVIATION = 100;
-	private static final int MIN_VALUE_DEVIATION = 60;
-	private static final int MAX_VALUE_DEVIATION = 40;
+	private static final float MIN_VALUE_NO_DEVIATION = 10;
+	private static final float MAX_VALUE_NO_DEVIATION = 100;
+	private static final float MIN_VALUE_DEVIATION = 60;
+	private static final float MAX_VALUE_DEVIATION = 40;
 	private static final SensorRange SENSOR_RANGE_NO_DEVIATION =
 			new SensorRange(MIN_VALUE_NO_DEVIATION, MAX_VALUE_NO_DEVIATION );
 	private static final SensorRange SENSOR_RANGE_MIN_DEVIATION =

@@ -5,11 +5,11 @@
     <artifactId>probes-monitoring</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>sensors</artifactId>
+  <artifactId>config-server</artifactId>
   <dependencies>
 	  <dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-data-mongodb</artifactId>
+		  <groupId>org.springframework.cloud</groupId>
+		  <artifactId>spring-cloud-config-server</artifactId>
 	  </dependency>
   </dependencies>
 </project>
