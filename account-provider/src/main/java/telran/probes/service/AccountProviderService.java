@@ -1,7 +1,6 @@
 package telran.probes.service;
 
-import telran.probes.dto.AccountDto;
-//import telran.security.accounting.dto.*;
+import telran.security.accounting.dto.AccountDto;
 
 public interface AccountProviderService {
 AccountDto getAccount(String email);

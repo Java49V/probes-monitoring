@@ -6,8 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import telran.probes.dto.AccountDto;
-//import telran.security.accounting.dto.*;
+import telran.security.accounting.dto.AccountDto;
 
 @Document(collection="accounts")
 @Getter
@@ -21,7 +20,6 @@ public class Account {
 		return new Account(accountDto.email(), accountDto.password(), accountDto.roles());
 	}
 	public AccountDto build() {
-		return new AccountDto(email, "********", roles);
+		return new AccountDto(email, hashPassword, roles);
 	}
 }
-

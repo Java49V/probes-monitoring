@@ -22,5 +22,10 @@
 			<artifactId>web-exceptions-handler</artifactId>
 			<version>0.0.1</version>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>telran.security</groupId>
+			<artifactId>accounting-management</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+  </dependencies>
 </project>

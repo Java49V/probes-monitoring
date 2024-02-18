@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import telran.probes.dto.AccountDto;
 import telran.probes.service.AccountProviderService;
+import telran.security.accounting.dto.AccountDto;
 
 @RestController
 @RequiredArgsConstructor
