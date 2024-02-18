@@ -22,30 +22,27 @@ import telran.probes.service.SensorsService;
 @RequiredArgsConstructor
 
 public class SensorsAppl {
-	public static final long TIMEOUT = 10000;
+	public static final long TIMEOUT = 20000;
 	final SensorsService sensorService;
 	final StreamBridge streamBridge;
 	final SensorsConfiguration sensorsConfiguration;
-	
-	
-	
-public static void main(String[] args) throws InterruptedException {
-	ConfigurableApplicationContext ctx = SpringApplication.run(SensorsAppl.class, args);
-	Thread.sleep(TIMEOUT);
-	ctx.close();
-}
-@Bean
-Supplier<ProbeData> sensorsData() {
-	return this::getRandomProbeData;
-}
-ProbeData getRandomProbeData() {
-	String bindingName = sensorsConfiguration.getBindingName();
-	 ProbeData probeData = sensorService.getRandomProbeData();
-	 log.debug("probe data: {} has been sent to {}", probeData, bindingName);
-	 return probeData;
-}
 
+	public static void main(String[] args) throws InterruptedException {
+		ConfigurableApplicationContext ctx = SpringApplication.run(SensorsAppl.class, args);
+		Thread.sleep(TIMEOUT);
+		ctx.close();
+	}
 
+	@Bean
+	Supplier<ProbeData> sensorsData() {
+		return this::getRandomProbeData;
+	}
 
+	ProbeData getRandomProbeData() {
+		String bindingName = sensorsConfiguration.getBindingName();
+		ProbeData probeData = sensorService.getRandomProbeData();
+		log.debug("probe data: {} has been sent to {}", probeData, bindingName);
+		return probeData;
+	}
 
 }
