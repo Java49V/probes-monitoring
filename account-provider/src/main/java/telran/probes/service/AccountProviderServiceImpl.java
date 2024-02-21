@@ -16,7 +16,7 @@ final AccountRepo accountRepo;
 	@Override
 	public AccountDto getAccount(String email) {
 		Account account = accountRepo.findById(email).orElseThrow(() ->
-		new NotFoundException(String.format("account %d not found", email)));
+		new NotFoundException(String.format("account %s not found", email)));
 		return account.build();
 	}
 

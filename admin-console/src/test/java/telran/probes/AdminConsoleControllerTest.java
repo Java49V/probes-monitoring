@@ -26,6 +26,7 @@ import telran.probes.service.AdminConsoleService;
 import static telran.probes.dto.ErrorMessages.*;
 
 @WebMvcTest
+
 class AdminConsoleControllerTest {
 	private static final Long SENSOR_ID_NORMAL = 123l;
 	private static final SensorRange SENSOR_RANGE_NORMAL = new SensorRange(10f, 100f);
@@ -48,7 +49,7 @@ class AdminConsoleControllerTest {
 	SensorEmailsDto sensorEmailsDtoNormal = new SensorEmailsDto(SENSOR_ID_NORMAL, new String[] { "kuku@gmail.com" });
 	SensorEmailsDto sensorEmailsNotFound = new SensorEmailsDto(SENSOR_ID_NOT_FOUND, new String[] { "kuku@gmail.com" });
 	private SensorRangeDto sensorRangeNotFound = new SensorRangeDto(SENSOR_ID_NOT_FOUND, SENSOR_RANGE_NORMAL);
-
+	
 @Test
 	@DisplayName(TestDisplayNames.UPDATE_RANGE_NORMAL)
 	void updateRangeNormalFlow()throws Exception {

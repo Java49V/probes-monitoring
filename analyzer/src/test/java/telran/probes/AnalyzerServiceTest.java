@@ -34,7 +34,8 @@ import telran.probes.service.SensorRangeProviderService;
 class AnalyzerServiceTest {
 	@Autowired
 InputDestination producer;
-	String consumerBindingName = "configChangeConsumer-in-0";
+	@Value("${app.sensors.update.binding.name}")
+	String consumerBindingName;
 	@MockBean
 	RestTemplate restTemplate;
 	@Autowired
