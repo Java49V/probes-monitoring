@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: account-provider
+spec:
+  selector:
+    matchLabels:
+      app: account-provider
+  template:
+    metadata:
+      labels:
+        app: account-provider
+    spec:
+      containers:
+        - name: account-provider
+          image: account-provider
+          resources:
+            limits:
+              memory: '300Mi'
+              cpu: '200m'
+          ports:
+            - containerPort: 8989
+          env:
+            - name: CONFIG_SERVER_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: pm-config-map
+                  key: configServerHost
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: mongoPassword
+                  name: pm-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: account-provider
+spec:
+  selector:
+    app: account-provider
+  ports:
+    - port: 8989
+      targetPort: 8989

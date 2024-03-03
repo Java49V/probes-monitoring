@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: avg-populator
+spec:
+  selector:
+    matchLabels:
+      app: avg-populator
+  template:
+    metadata:
+      labels:
+        app: avg-populator
+    spec:
+      containers:
+      - name: avg-populator
+        image: avg-populator
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+        env:
+        - name: CONFIG_SERVER_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: pm-config-map
+              key: configServerHost
+        - name: CONFLUENT_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: confluentApiSecret
+              name: pm-secret
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mongoPassword
+              name: pm-secret              
+       

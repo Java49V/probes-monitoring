@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: avg-reducer
+spec:
+  selector:
+    matchLabels:
+      app: avg-reducer
+  template:
+    metadata:
+      labels:
+        app: avg-reducer
+    spec:
+      containers:
+      - name: avg-reducer
+        image: avg-reducer
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+        env:
+        - name: CONFIG_SERVER_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: pm-config-map
+              key: configServerHost
+        - name: CONFLUENT_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: confluentApiSecret
+              name: pm-secret
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: redisPassword
+              name: pm-secret               
+       

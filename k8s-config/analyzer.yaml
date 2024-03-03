@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analyzer
+spec:
+  selector:
+    matchLabels:
+      app: analyzer
+  template:
+    metadata:
+      labels:
+        app: analyzer
+    spec:
+      containers:
+      - name: analyzer
+        image: analyzer
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+        env:
+        - name: CONFIG_SERVER_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: pm-config-map
+              key: configServerHost
+        - name: CONFLUENT_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: confluentApiSecret
+              name: pm-secret        
+       

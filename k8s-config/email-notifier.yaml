@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-notifier
+spec:
+  selector:
+    matchLabels:
+      app: email-notifier
+  template:
+    metadata:
+      labels:
+        app: email-notifier
+    spec:
+      containers:
+      - name: email-notifier
+        image: email-notifier
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+        env:
+        - name: CONFIG_SERVER_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: pm-config-map
+              key: configServerHost
+        - name: CONFLUENT_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: confluentApiSecret
+              name: pm-secret
+        - name: MAIL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mailPassword
+              name: pm-secret                
+       

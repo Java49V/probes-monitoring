@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-console
+spec:
+  selector:
+    matchLabels:
+      app: admin-console
+  template:
+    metadata:
+      labels:
+        app: admin-console
+    spec:
+      containers:
+      - name: admin-console
+        image: admin-console
+        resources:
+          limits:
+            memory: "300Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 8484
+        env:
+        - name: CONFIG_SERVER_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: pm-config-map
+              key: configServerHost
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: mongoPassword
+              name: pm-secret
+        - name: CONFLUENT_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: confluentApiSecret
+              name: pm-secret    
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-console
+spec:
+  selector:
+    app: admin-console
+  ports:
+  - port: 8484
+    targetPort: 8484
+                    
